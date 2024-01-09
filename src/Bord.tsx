@@ -2,10 +2,8 @@ import {useState} from "react";
 import Square from "./Square";
 
 
-export default function Bord() {
-  const[ squares, SetSquares] = useState(Array(9).fill(null));
-  const[isNext, setIsNext]
-= useState(true);
+export default function Bord({squares,isNext, onPlay}) {
+   
   
   const caluclateWinner = (square:any ) =>{ 
     console.log("squre", square)
@@ -41,8 +39,9 @@ export default function Bord() {
     }else{
       nextSquares[i] ="O";   
     }
-    setIsNext(!isNext);
-    SetSquares(nextSquares);
+    onPlay(nextSquares)
+    //setIsNext(!isNext);
+    //setSquares(nextSquares);
   }
 
   let status: string;
